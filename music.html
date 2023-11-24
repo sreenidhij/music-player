@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Music Player</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #282c35; /* Dark background color */
+            color: #fff;
+        }
+
+        .music-player {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        .controls button {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <audio controls>
+            <source src="C:\Users\sreen\Downloads\The Weeknd - Blinding lights.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="controls">
+            <button onclick="playPause()">Play/Pause</button>
+            <button onclick="setVolume('-')">Volume Down</button>
+            <button onclick="setVolume('+')">Volume Up</button>
+        </div>
+    </div>
+
+    <script>
+        var audio = document.querySelector('audio');
+
+        function playPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function setVolume(direction) {
+            var currentVolume = audio.volume;
+
+            if (direction === '+' && currentVolume < 1.0) {
+                audio.volume += 0.1;
+            } else if (direction === '-' && currentVolume > 0.0) {
+                audio.volume -= 0.1;
+            }
+        }
+    </script>
+</body>
+</html>
